@@ -57,7 +57,4 @@ Bug [113504](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=113504) has been succe
 Email sent to:
 `gcc-bugs@gcc.gnu.org, saifi.khan@nishan.io`
 
--> Redirected to LLVM's GitHub https://github.com/llvm/llvm-project/tree/main/pstl.
-
-# Issue in the LLVM GitHub
-
+**Redirected to LLVM's GitHub https://github.com/llvm/llvm-project/tree/main/pstl.**
