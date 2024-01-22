@@ -31,25 +31,33 @@ An example of the results (and max. memory usage according to `/usr/bin/time`) i
 In the example, the parallel `std::sort` (pstl_sort) uses ~3 times more memory than the `tbb::parallel_sort` (tbb_sort) and the sequential `std::sort` (seq_sort).
 It also runs faster, though.
 
-System specs in the example:
-CPU: AMD EPYC 7551
-RAM: 256 GB DDR4
-OS: Debian 10.10
+Despite the [docs](https://github.com/llvm/llvm-project/blob/main/pstl/README.md) saying that `std::sort`` "require additional O(n) memory space for parallel execution", it seems that the memory overhead is higher than what would be expected.
 
-Compilation with:
+Is that high memory usage a deliberate trade-off for performance?
+Is the algorithm still in development to improve memory usage?
+
+* Notes of the benchmark:
+	* System specs in the example:
+	* CPU: AMD EPYC 7551
+	* RAM: 256 GB DDR4
+	* OS: Debian 10.10
+
+	* Compilation with:
 ```bash
 g++ -std=c++17 -O3 -pedantic -Wall -Wextra -Werror -o pstl_sort.out main.cpp -ltbb -DPSTL_SORT
 g++ -std=c++17 -O3 -pedantic -Wall -Wextra -Werror -o tbb_sort.out main.cpp -ltbb -DTBB_SORT
 g++ -std=c++17 -O3 -pedantic -Wall -Wextra -Werror -o seq_sort.out main.cpp -ltbb
 ```
 
-Did I miss something in my example code?
-Is that high memory usage a deliberate trade-off for performance?
-Is the algorithm still in development to improve memory usage?
 
-# Issue in the forum
+# Issue in the GCC Bugzilla
 
 Bug [113504](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=113504) has been successfully created.
 
 Email sent to:
 `gcc-bugs@gcc.gnu.org, saifi.khan@nishan.io`
+
+-> Redirected to LLVM's GitHub https://github.com/llvm/llvm-project/tree/main/pstl.
+
+# Issue in the LLVM GitHub
+
